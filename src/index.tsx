@@ -3,7 +3,7 @@ import { html } from "hono/html";
 
 const app = new Hono();
 
-app.get("*", (c) => {
+app.get("/", (c) => {
   return c.html(html` <html>
     <head>
       <link href="/static/style.css" rel="stylesheet" />
