@@ -5,10 +5,13 @@ import { Hono } from "hono";
 
 const app = new Hono();
 
-app.get("/", (c) => {
+// match everything but /src/client/*
+app.get("*", async (c) => {
   // @ts-ignore
   return c.html(<Template />);
 });
+
+// create middleware so /src/client/routes.gen.ts?t=1709975919245 returns the same as /src/client/routes.gen.ts
 
 export const Template = () => {
   return (

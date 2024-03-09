@@ -1,20 +1,29 @@
 import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 
+import "@mantine/core/styles.css";
+
+import { MantineProvider } from "@mantine/core";
+import { AppShell } from "../components/app-shell";
+
 export const Route = createRootRoute({
   component: () => (
     <>
-      <div className="p-2 flex gap-2">
-        <Link to="/" className="[&.active]:font-bold">
-          Home
-        </Link>{" "}
-        <Link to="/about" className="[&.active]:font-bold">
-          About
-        </Link>
-      </div>
-      <hr />
-      <Outlet />
-      <TanStackRouterDevtools />
+      <MantineProvider forceColorScheme="dark">
+        <AppShell>
+          <div className="p-2 flex gap-2">
+            <Link to="/" className="[&.active]:font-bold">
+              Home
+            </Link>{" "}
+            <Link to="/about" className="[&.active]:font-bold">
+              About
+            </Link>
+          </div>
+          <hr />
+          <Outlet />
+          <TanStackRouterDevtools />
+        </AppShell>
+      </MantineProvider>
     </>
   ),
 });
